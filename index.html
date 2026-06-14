@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プロフィール登録 | Connect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Connect</a>
+  <nav>
+    <a href="index.html" class="active">プロフィール登録</a>
+    <a href="profiles.html">参加者一覧</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>プロフィールを登録する</h1>
+  <p>交流会の参加者にあなたを紹介しましょう</p>
+</div>
+
+<div class="container">
+  <div class="card">
+
+    <!-- 顔写真 -->
+    <div class="form-group">
+      <label>顔写真</label>
+      <div class="photo-area">
+        <div class="photo-preview" id="photoPreview">
+          <span class="placeholder">👤</span>
+          <img id="photoImg" src="" alt="プレビュー" />
+        </div>
+        <div>
+          <label for="photoFile" class="photo-upload-btn">📷 写真を選ぶ</label>
+          <input type="file" id="photoFile" accept="image/*" />
+          <p class="hint">JPG / PNG・推奨サイズ 400×400px</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- 名前 -->
+    <div class="form-group">
+      <label for="name">氏名<span class="required">*</span></label>
+      <input type="text" id="name" placeholder="山田 太郎" required />
+    </div>
+
+    <!-- 会社・所属 -->
+    <div class="form-group">
+      <label for="company">会社名・所属</label>
+      <input type="text" id="company" placeholder="株式会社〇〇" />
+    </div>
+
+    <!-- 役職 -->
+    <div class="form-group">
+      <label for="role">役職</label>
+      <input type="text" id="role" placeholder="営業部 マネージャー" />
+    </div>
+
+    <hr class="divider" />
+
+    <!-- メール -->
+    <div class="form-group">
+      <label for="email">メールアドレス<span class="required">*</span></label>
+      <input type="email" id="email" placeholder="your@email.com" required />
+      <p class="hint">参加者一覧に表示されます</p>
+    </div>
+
+    <!-- 電話 -->
+    <div class="form-group">
+      <label for="phone">電話番号</label>
+      <input type="tel" id="phone" placeholder="090-0000-0000" />
+    </div>
+
+    <!-- SNS -->
+    <div class="form-group">
+      <label for="sns">SNS・URLなど</label>
+      <input type="url" id="sns" placeholder="https://x.com/yourhandle" />
+      <p class="hint">X、LinkedIn、個人サイトなど</p>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- 自己紹介 -->
+    <div class="form-group">
+      <label for="bio">自己紹介・一言</label>
+      <textarea id="bio" placeholder="仕事のこと、趣味、今日の目標など、自由にどうぞ。"></textarea>
+    </div>
+
+    <!-- Submit -->
+    <button class="btn btn-primary" id="submitBtn" onclick="submitProfile()">
+      登録する
+    </button>
+
+    <div class="alert success" id="alertSuccess">
+      ✅ 登録が完了しました！ありがとうございます。
+    </div>
+    <div class="alert error" id="alertError"></div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
