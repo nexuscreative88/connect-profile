@@ -7,12 +7,17 @@ exports.handler = async (event) => {
 
   try {
     const data = JSON.parse(event.body);
-    const { name, company, role, email, phone, sns, bio, photoUrl } = data;
+    const {
+      name, nickname, email, company,
+      area, lineId, instagram,
+      seeking, offering, hobbies, goals,
+      source, referrer, photoUrl,
+    } = data;
 
-    if (!name || !email) {
+    if (!name || !nickname || !email || !company || !referrer) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "名前とメールアドレスは必須です" }),
+        body: JSON.stringify({ error: "必須項目が不足しています" }),
       };
     }
 
@@ -31,12 +36,27 @@ exports.handler = async (event) => {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,
-      range: "Sheet1!A:I",
+      range: "Sheet1!A:P",
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [
-          [timestamp, name, company || "", role || "", email, phone || "", sns || "", bio || "", photoUrl || ""],
-        ],
+        values: [[
+          timestamp,
+          name,
+          nickname,
+          email,
+          company,
+          area      || "",
+          lineId    || "",
+          instagram || "",
+          seeking   || "",
+          offering  || "",
+          hobbies   || "",
+          goals     || "",
+          source    || "",
+          referrer,
+          photoUrl  || "",
+          "当日現金払い",
+        ]],
       },
     });
 

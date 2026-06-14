@@ -28,7 +28,7 @@
 
     <!-- 顔写真 -->
     <div class="form-group">
-      <label>顔写真</label>
+      <label>プロフィール写真</label>
       <div class="photo-area">
         <div class="photo-preview" id="photoPreview">
           <span class="placeholder">👤</span>
@@ -44,52 +44,96 @@
 
     <hr class="divider" />
 
-    <!-- 名前 -->
+    <!-- 氏名 -->
     <div class="form-group">
       <label for="name">氏名<span class="required">*</span></label>
       <input type="text" id="name" placeholder="山田 太郎" required />
     </div>
 
-    <!-- 会社・所属 -->
+    <!-- ニックネーム -->
     <div class="form-group">
-      <label for="company">会社名・所属</label>
-      <input type="text" id="company" placeholder="株式会社〇〇" />
+      <label for="nickname">ニックネーム（当日呼ばれたい名前）<span class="required">*</span></label>
+      <input type="text" id="nickname" placeholder="たろう" required />
     </div>
-
-    <!-- 役職 -->
-    <div class="form-group">
-      <label for="role">役職</label>
-      <input type="text" id="role" placeholder="営業部 マネージャー" />
-    </div>
-
-    <hr class="divider" />
 
     <!-- メール -->
     <div class="form-group">
       <label for="email">メールアドレス<span class="required">*</span></label>
       <input type="email" id="email" placeholder="your@email.com" required />
-      <p class="hint">参加者一覧に表示されます</p>
     </div>
 
-    <!-- 電話 -->
+    <!-- 所属・お仕事 -->
     <div class="form-group">
-      <label for="phone">電話番号</label>
-      <input type="tel" id="phone" placeholder="090-0000-0000" />
-    </div>
-
-    <!-- SNS -->
-    <div class="form-group">
-      <label for="sns">SNS・URLなど</label>
-      <input type="url" id="sns" placeholder="https://x.com/yourhandle" />
-      <p class="hint">X、LinkedIn、個人サイトなど</p>
+      <label for="company">所属・お仕事<span class="required">*</span></label>
+      <input type="text" id="company" placeholder="株式会社〇〇 / フリーランス など" required />
     </div>
 
     <hr class="divider" />
 
-    <!-- 自己紹介 -->
+    <!-- 活動エリア -->
     <div class="form-group">
-      <label for="bio">自己紹介・一言</label>
-      <textarea id="bio" placeholder="仕事のこと、趣味、今日の目標など、自由にどうぞ。"></textarea>
+      <label for="area">活動エリア</label>
+      <input type="text" id="area" placeholder="東京・神奈川エリア など" />
+    </div>
+
+    <!-- LINE ID -->
+    <div class="form-group">
+      <label for="lineId">LINE ID</label>
+      <input type="text" id="lineId" placeholder="your_line_id" />
+    </div>
+
+    <!-- インスタ -->
+    <div class="form-group">
+      <label for="instagram">インスタアカウント</label>
+      <input type="text" id="instagram" placeholder="@yourhandle" />
+    </div>
+
+    <hr class="divider" />
+
+    <!-- 得たいこと -->
+    <div class="form-group">
+      <label for="seeking">得たいこと・探していること</label>
+      <textarea id="seeking" placeholder="今日の交流会で出会いたい人、求めているつながりや情報など。"></textarea>
+    </div>
+
+    <!-- 提供できること -->
+    <div class="form-group">
+      <label for="offering">提供できること・得意なこと</label>
+      <textarea id="offering" placeholder="あなたが役立てること、得意なスキルや経験など。"></textarea>
+    </div>
+
+    <!-- 趣味 -->
+    <div class="form-group">
+      <label for="hobbies">趣味・ハマっていること</label>
+      <textarea id="hobbies" placeholder="最近ハマっていること、趣味、休日の過ごし方など。"></textarea>
+    </div>
+
+    <!-- やりたいこと -->
+    <div class="form-group">
+      <label for="goals">これからやりたいこと・挑戦したいこと</label>
+      <textarea id="goals" placeholder="近い将来のビジョン、挑戦したいこと、夢など。"></textarea>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- 登録の経緯 -->
+    <div class="form-group">
+      <label for="source">登録の経緯（知ったきっかけ）</label>
+      <input type="text" id="source" placeholder="SNS / 紹介 / チラシ など" />
+    </div>
+
+    <!-- 紹介者名 -->
+    <div class="form-group">
+      <label for="referrer">紹介者名<span class="required">*</span></label>
+      <input type="text" id="referrer" placeholder="紹介してくれた方のお名前" required />
+    </div>
+
+    <hr class="divider" />
+
+    <!-- 決済状況 -->
+    <div class="form-group">
+      <label>決済状況</label>
+      <p class="hint" style="font-size:.9rem; color:var(--gray-600);">💴 当日現金払い</p>
     </div>
 
     <!-- Submit -->

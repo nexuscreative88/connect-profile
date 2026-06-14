@@ -5,7 +5,6 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  // パスワード認証
   const password = event.queryStringParameters?.password;
   const correctPassword = process.env.PROFILES_PASSWORD || "connect2024";
 
@@ -29,21 +28,28 @@ exports.handler = async (event) => {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: sheetId,
-      range: "Sheet1!A2:I",
+      range: "Sheet1!A2:P",
     });
 
     const rows = response.data.values || [];
 
     const profiles = rows.map((row) => ({
-      timestamp: row[0] || "",
-      name: row[1] || "",
-      company: row[2] || "",
-      role: row[3] || "",
-      email: row[4] || "",
-      phone: row[5] || "",
-      sns: row[6] || "",
-      bio: row[7] || "",
-      photoUrl: row[8] || "",
+      timestamp: row[0]  || "",
+      name:      row[1]  || "",
+      nickname:  row[2]  || "",
+      email:     row[3]  || "",
+      company:   row[4]  || "",
+      area:      row[5]  || "",
+      lineId:    row[6]  || "",
+      instagram: row[7]  || "",
+      seeking:   row[8]  || "",
+      offering:  row[9]  || "",
+      hobbies:   row[10] || "",
+      goals:     row[11] || "",
+      source:    row[12] || "",
+      referrer:  row[13] || "",
+      photoUrl:  row[14] || "",
+      payment:   row[15] || "",
     }));
 
     return {

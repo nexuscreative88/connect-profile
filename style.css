@@ -380,6 +380,39 @@ input[type="file"] { display: none; }
   font-size: .9rem;
 }
 
+.profile-meta {
+  border-top: 1px solid var(--gray-200);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-meta-row {
+  font-size: .82rem;
+  color: var(--gray-600);
+}
+
+.profile-section {
+  border-top: 1px solid var(--gray-200);
+  padding-top: 12px;
+}
+
+.profile-section-label {
+  display: block;
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--gray-400);
+  letter-spacing: .04em;
+  margin-bottom: 4px;
+}
+
+.profile-section p {
+  font-size: .85rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
   .card { padding: 24px 20px; }

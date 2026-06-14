@@ -45,22 +45,31 @@ async function submitProfile() {
   alertOk.classList.remove("show");
   alertErr.classList.remove("show");
 
-  const name  = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
+  const name     = document.getElementById("name").value.trim();
+  const nickname = document.getElementById("nickname").value.trim();
+  const email    = document.getElementById("email").value.trim();
+  const company  = document.getElementById("company").value.trim();
+  const referrer = document.getElementById("referrer").value.trim();
 
-  if (!name || !email) {
-    showAlert(alertErr, "氏名とメールアドレスは必須です。");
+  if (!name || !nickname || !email || !company || !referrer) {
+    showAlert(alertErr, "氏名・ニックネーム・メールアドレス・所属・紹介者名は必須です。");
     return;
   }
 
   const payload = {
     name,
-    company:  document.getElementById("company").value.trim(),
-    role:     document.getElementById("role").value.trim(),
+    nickname,
     email,
-    phone:    document.getElementById("phone").value.trim(),
-    sns:      document.getElementById("sns").value.trim(),
-    bio:      document.getElementById("bio").value.trim(),
+    company,
+    area:      document.getElementById("area").value.trim(),
+    lineId:    document.getElementById("lineId").value.trim(),
+    instagram: document.getElementById("instagram").value.trim(),
+    seeking:   document.getElementById("seeking").value.trim(),
+    offering:  document.getElementById("offering").value.trim(),
+    hobbies:   document.getElementById("hobbies").value.trim(),
+    goals:     document.getElementById("goals").value.trim(),
+    source:    document.getElementById("source").value.trim(),
+    referrer,
     photoUrl: "",
   };
 
@@ -94,7 +103,8 @@ function showAlert(el, message) {
 }
 
 function resetForm() {
-  ["name", "company", "role", "email", "phone", "sns", "bio"].forEach((id) => {
+  ["name", "nickname", "email", "company", "area", "lineId", "instagram",
+   "seeking", "offering", "hobbies", "goals", "source", "referrer"].forEach((id) => {
     const el = document.getElementById(id);
     if (el) el.value = "";
   });
@@ -155,12 +165,20 @@ function renderProfiles(profiles) {
         ? `<img src="${escHtml(p.photoUrl)}" alt="${escHtml(p.name)}" />`
         : `<span>👤</span>`;
 
-      const roleCompany = [p.role, p.company].filter(Boolean).join(" / ");
+      const rows = [
+        p.company   && `<div class="profile-meta-row">🏢 ${escHtml(p.company)}</div>`,
+        p.area      && `<div class="profile-meta-row">📍 ${escHtml(p.area)}</div>`,
+        p.email     && `<div class="profile-meta-row"><a class="profile-link" href="mailto:${escHtml(p.email)}">✉ ${escHtml(p.email)}</a></div>`,
+        p.lineId    && `<div class="profile-meta-row">💬 LINE: ${escHtml(p.lineId)}</div>`,
+        p.instagram && `<div class="profile-meta-row">📸 ${escHtml(p.instagram)}</div>`,
+      ].filter(Boolean).join("");
 
-      const links = [];
-      if (p.email) links.push(`<a class="profile-link" href="mailto:${escHtml(p.email)}">✉ ${escHtml(p.email)}</a>`);
-      if (p.phone) links.push(`<a class="profile-link" href="tel:${escHtml(p.phone)}">📞 ${escHtml(p.phone)}</a>`);
-      if (p.sns)   links.push(`<a class="profile-link" href="${escHtml(p.sns)}" target="_blank" rel="noopener">🔗 SNS</a>`);
+      const sections = [
+        p.seeking  && `<div class="profile-section"><span class="profile-section-label">🔍 得たいこと</span><p>${escHtml(p.seeking)}</p></div>`,
+        p.offering && `<div class="profile-section"><span class="profile-section-label">💡 提供できること</span><p>${escHtml(p.offering)}</p></div>`,
+        p.hobbies  && `<div class="profile-section"><span class="profile-section-label">🎯 趣味・ハマっていること</span><p>${escHtml(p.hobbies)}</p></div>`,
+        p.goals    && `<div class="profile-section"><span class="profile-section-label">🚀 やりたいこと</span><p>${escHtml(p.goals)}</p></div>`,
+      ].filter(Boolean).join("");
 
       return `
         <div class="profile-card">
@@ -168,11 +186,11 @@ function renderProfiles(profiles) {
             <div class="profile-avatar">${avatarHtml}</div>
             <div>
               <div class="profile-name">${escHtml(p.name)}</div>
-              ${roleCompany ? `<div class="profile-role-company">${escHtml(roleCompany)}</div>` : ""}
+              <div class="profile-role-company">${escHtml(p.nickname)}</div>
             </div>
           </div>
-          ${p.bio ? `<div class="profile-bio">${escHtml(p.bio)}</div>` : ""}
-          ${links.length ? `<div class="profile-links">${links.join("")}</div>` : ""}
+          ${rows ? `<div class="profile-meta">${rows}</div>` : ""}
+          ${sections}
         </div>
       `;
     })
