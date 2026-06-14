@@ -61,7 +61,7 @@ async function submitProfile() {
     phone:    document.getElementById("phone").value.trim(),
     sns:      document.getElementById("sns").value.trim(),
     bio:      document.getElementById("bio").value.trim(),
-    photoUrl: getPhotoDataUrl(),
+    photoUrl: "",
   };
 
   btn.disabled = true;
